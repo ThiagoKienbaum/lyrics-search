@@ -25,3 +25,5 @@ See this project running [here](https://thiagokienbaum.github.io/lyrics-search/)
 ## Meta
 
 Thiago Kienbaum – [LinkedIn](https://www.linkedin.com/in/thiago-kienbaum/) – thiago.kienbaum@hotmail.com
+
+This project was inspired by this [video](https://www.youtube.com/watch?v=h0sNAXE1ozo).
