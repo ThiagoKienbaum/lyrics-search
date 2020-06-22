@@ -4,24 +4,24 @@ form.addEventListener('submit', eventListener => {
     submit();
 });
 
-async function submit() {
+function submit() {
     const artist = document.querySelector('#artist');
     const song = document.querySelector('#song');
     const lyrics = document.querySelector('#lyrics');
 
-    loadingIcon(lyrics);   
-
-    try {
-        const lyricsResponse = await lyricSearch(artist.value, song.value);
-        const data = await lyricsResponse.json();
-        if (data.lyrics) {
-            lyrics.innerHTML = data.lyrics;
-        } else {
-            lyrics.innerHTML = data.error;
-        }
-    } catch (err) {
-        console.log(err);
-    }
+    loadingIcon(lyrics);
+    lyricSearch(artist.value, song.value)
+        .then(response => response.json())
+        .then(data => {
+            if (data.lyrics) {
+                lyrics.innerHTML = data.lyrics;
+            } else {
+                lyrics.innerHTML = data.error;
+            }
+        }, err => {
+            lyrics.innerHTML = "Error loading lyrics"
+            console.error(err)
+        })
 }
 
 function loadingIcon(lyrics) {
